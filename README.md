@@ -1,2 +1,3 @@
 # SLDC-UI!
-[image](https://user-images.githubusercontent.com/51552560/195929377-6132774d-d1e0-4dc7-bbc3-b3d5f17718a8.png)
+![image](https://user-images.githubusercontent.com/51552560/195929450-374fa329-88ff-4021-b5da-a5a617bcaf5f.png)
+
