@@ -1,5 +1,5 @@
 package application;
-	
+import java.sql.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -27,8 +27,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
-
+import java.sql.*;
+import java.sql.*;
 public class Main extends Application {
 
 	public static final String BLANK = "";
@@ -116,18 +116,40 @@ public class Main extends Application {
 				return (b.getValue()).compareTo(a.getValue());
 			}
 		});
-				int j=0;
-				List<String> words = new ArrayList<String>();
-				for (Map.Entry<String, Integer> i : sortedList) {
-					j++;
-					if(j < 21) {
-						words.add(i.getKey() + i.getValue());
-						System.out.println(i.getKey() + " -> " + i.getValue());
-					}
-					else {
-						break;
-					}
-				}
+		 String url      = "jdbc:mysql://localhost:3306/wordoccurence";   //database specific url.
+	     String user     = "root";
+	     String password = "";
+	     try(Connection connection = DriverManager.getConnection(url, user, password)) {
+	    		PreparedStatement ps = connection.prepareStatement("insert into words (words) values(?)");
+            	ps.setString(1,Word);
+            	ps.executeUpdate();
+	            try(Statement statement = connection.createStatement()){
+	                String sql = "select * from words;";
+	                try(ResultSet result = statement.executeQuery(sql)){
+	                    while(result.next()) {
+	                    	System.out.println(result.getString(1));
+	                    }
+	                    connection.close();
+	                }
+	            }
+	            
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+//	     
+//				int j=0;
+//				List<String> words = new ArrayList<String>();
+//				for (Map.Entry<String, Integer> i : sortedList) {
+//					j++;
+//					if(j < 21) {
+//						words.add(i.getKey() + i.getValue());
+//						System.out.println(i.getKey() + " -> " + i.getValue());
+//					}
+//					else {
+//						break;
+//					}
+//				}
+				
 		in.close();
 
 	}
@@ -140,7 +162,9 @@ public class Main extends Application {
 		alert.showAndWait();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException {
+		
 		launch(args);
+		
 	}
 }

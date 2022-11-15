@@ -11,6 +11,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSoup"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/junit"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/connectors"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Amanpreet/OneDrive/Desktop/Fill Manager/Valencia/SF Development/Jsoup"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
